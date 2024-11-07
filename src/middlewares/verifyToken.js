@@ -9,11 +9,10 @@ const verifyToken = (req, res, next) => {
       errorMessage: "Authorization key must be added in header",
     });
   }
-
-  const authHeader = req.headers.authorization;
-
+ const authHeader = req.headers.authorization;
+  const token = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : authHeader;
   // Verify token
-  jwt.verify(authHeader, process.env.SECRET_KEY, (err, decoded) => {
+  jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
     if (err) {
       return res.status(500).json({
         success: false,
