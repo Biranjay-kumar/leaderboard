@@ -9,14 +9,14 @@ import user from "./routes/user.routes.js";
 import cookieParser from "cookie-parser";
 const app = express();
 // Use cors middleware
-app.use(cors());
+const corsOptions = {
+  origin: "http://localhost:3000", // Replace with your React app's URL in production
+  methods: "GET, POST, PUT, DELETE, PATCH, OPTIONS", // Ensure OPTIONS is allowed
+  credentials: true, // Enable this if you use cookies or tokens
+  allowedHeaders: "Content-Type, Authorization", // Allow necessary headers
+};
 
-app.use(
-  cors({
-    origin: "*", // Replace with the frontend's URL (React app)
-    methods: "GET,POST,PUT,DELETE,PATCH", // Allowed methods
-  })
-);
+app.use(cors(corsOptions));
 
 //middle wares
 app.use(express.json());

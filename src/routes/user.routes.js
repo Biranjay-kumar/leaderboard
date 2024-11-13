@@ -5,8 +5,8 @@ import verifyToken from "../middlewares/verifyToken.js";
 const router = express.Router();
 
 router.get("/get-users", getAllUser);
-router.post("/get-users-info", verifyToken, getUserWithHelpOfToken);
-router.post("/get-users-info", verifyToken, getUserWithHelpOfId);
+router.post("/get-users-info-token", verifyToken, getUserWithHelpOfToken);
+router.post("/get-users-info-id", verifyToken, getUserWithHelpOfId);
 router.patch("/claim-points", claimPoints);
 router.get("/your-daily-history", getTodayHistory);
 router.get("/your-weekly-history", getWeeklyData);
